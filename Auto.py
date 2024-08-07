@@ -1,11 +1,9 @@
 from pynput.keyboard import Key, Controller 
-from pynput.mouse import Button, Controller as MouseController
 import time
 from datetime import datetime, timedelta
 from workalendar.america import Brazil
 
 keyboard = Controller()
-mouse = MouseController()
 
 # Inicializa o calendário do Brasil
 cal = Brazil()
@@ -14,7 +12,7 @@ def type_slowly(text):
     for char in text:
         keyboard.press(char)
         keyboard.release(char)
-        time.sleep(0.05)  # Adjust the delay to control the typing speed
+        time.sleep(0.05)  
 
 def is_weekday(date):
     """Verifica se a data é um dia útil"""
@@ -47,8 +45,8 @@ while True:
     if action == '1':
 
         nome = input('Insira o nome do colaborador: ')
-        data_inicial = input('Data inicial (ddmmaaaa): ')
-        data_final = input('Data final (ddmmaaaa): ')
+        data_inicial = input('Data inicial: ')
+        data_final = input('Data final: ')
 
         # Converte as datas de string para datetime
         data_inicial_dt = datetime.strptime(data_inicial, '%d%m%Y').date()
@@ -77,7 +75,7 @@ while True:
         keyboard.type('0030')
         keyboard.tap(Key.tab)
         time.sleep(1)
-        type_slowly(data_inicial)  # Typing data_inicial slowly
+        type_slowly(data_inicial)
         time.sleep(3)
         keyboard.type(tempo_arredondado)
         time.sleep(5)
@@ -93,7 +91,7 @@ while True:
         keyboard.type('0030')
         keyboard.tap(Key.tab)
         time.sleep(1)
-        type_slowly(data_final)  # Typing data_final slowly
+        type_slowly(data_final)
         time.sleep(3)
         keyboard.type(tempo_arredondado)
         time.sleep(5)
@@ -101,8 +99,8 @@ while True:
 
     if action == '2':
         nome = input('Insira o nome do colaborador: ')
-        data_inicial = input('Data inicial (ddMMyyyy): ')
-        data_final = input('Data final (ddMMyyyy): ')
+        data_inicial = input('Data inicial: ')
+        data_final = input('Data final: ')
 
         # Converte as datas de string para datetime
         data_inicial_dt = datetime.strptime(data_inicial, '%d%m%Y').date()
@@ -129,7 +127,7 @@ while True:
         keyboard.type('0030')
         keyboard.tap(Key.tab)
         time.sleep(1)
-        type_slowly(data_inicial)  # Typing data_inicial slowly
+        type_slowly(data_inicial) 
         time.sleep(3)
         keyboard.type(tempo_arredondado)
         time.sleep(5)
@@ -145,7 +143,7 @@ while True:
         keyboard.type('0030')
         keyboard.tap(Key.tab)
         time.sleep(1)
-        type_slowly(data_final)  # Typing data_final slowly
+        type_slowly(data_final) 
         time.sleep(3)
         keyboard.type(tempo_arredondado)
         time.sleep(5)
