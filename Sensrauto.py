@@ -7,12 +7,21 @@ from pynput.mouse import Button, Controller
 from playsound import playsound
 from datetime import datetime, timedelta
 from workalendar.america import Brazil
+from PyQt5.QtCore import QTimer
+import subprocess
+import sys
+import os
 
 
 mouse = Controller()
+
 cal = Brazil()
 
 paused = False  # Variable to track the paused state
+
+
+
+
 
 
 ####################################################################################
@@ -67,7 +76,7 @@ def chamado_gusta():
     time.sleep(0.5)
     mouse.position = (-466, 202)
     mouse.click(Button.left, 1)
-    keyboard.write('tecnico de informação')
+    keyboard.write('tecnologia da informação')
     time.sleep(0.5)
     keyboard.press_and_release('backspace')
     time.sleep(0.5)
@@ -85,7 +94,7 @@ def chamado_gusta():
     time.sleep(0.3)
     mouse.click(Button.left, 1)
 
-def chamado_ita():
+def chamado_itacir():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
@@ -199,6 +208,7 @@ def chamado_vpn():
         print('Erro ao converter as datas. Verifique se as datas estão no formato DDMMYYYY.')
         return
 
+
     # Verifica se a data inicial é hoje, senão ajusta para o próximo dia útil
     if data_inicial_dt == datetime.now().date():
         print(f'Data inicial é hoje: {data_inicial_dt.strftime("%d/%m/%Y")}')
@@ -218,7 +228,6 @@ def chamado_vpn():
     print('Iniciado Liberação VPN')
     time.sleep(3) 
     playsound('audios\\pause.mp3')
-
     # Liberação VPN
     keyboard.write(f"Liberação VPN - {nome}")
     keyboard.press_and_release('tab')
@@ -236,9 +245,11 @@ def chamado_vpn():
     time.sleep(1)
     keyboard.write('Favor Liberar a VPN para o colaborador')
     time.sleep(2)
-    keyboard.write('tecnologia da informação')
+    keyboard.write('tecnologia da info')
+    time.sleep(0.5)
     time.sleep(4)
     keyboard.write('Itacir Gui')
+    playsound('audios\\alert.mp3')
 
     print('\nPara remoção inicie o Fluxo e aperte enter')
     print('Iniciado Remoção VPN\n')
@@ -278,13 +289,27 @@ def ativar_ferias():
 ##################################################################################
 
 #exterminador
+def exterminadorwin():
+    global palavra_chave_entry
+    exterwin = tk.CTk()
+    exterwin.title("Exterminador")
+    exterwin.geometry("300x150")
+    palavra_chave_entry = tk.CTkEntry(exterwin, placeholder_text="Palavra Chave", width=200, height=50)
+    instruções = tk.CTkLabel(exterwin, text="segura esc para pausar, separe cada frase em ','")
+    iniciar = tk.CTkButton(exterwin, text="Iniciar", command=exterminador, width=200, height=50, anchor="center")
+    instruções.pack()
+    palavra_chave_entry.pack()
+    iniciar.pack()
+    exterwin.mainloop()
+
 
 def check_word_in_clipboard():
-    global palavra  # Ensure palavra is global
+    global palavra
     # Get text from the clipboard and convert it to lowercase
+    palavras_chave = palavra_chave_entry.get().lower()
     clipboard_text = pyperclip.paste().lower()
 
-    palavras_chave = ('bloqueado', 'desbloqueio')
+    
 
     # Check if any of the words in 'palavras_chave' are in the clipboard text
     if any(word in clipboard_text for word in palavras_chave):
@@ -293,6 +318,7 @@ def check_word_in_clipboard():
     else:
         print("The word was not found in the clipboard text.")
         palavra = False
+
 def toggle_pause():
     global paused  # To modify the paused state
     if keyboard.is_pressed('esc'):
@@ -310,6 +336,7 @@ def toggle_pause():
 def exterminador():
     global paused  # Ensure paused is global so it's shared across functions
     global palavra  # Ensure palavra is global so it's shared across functions
+    print(palavra_chave_entry.get())
     playsound('audios\sf.mp3')
     palavra = False
     repetições = 0
@@ -403,7 +430,6 @@ def exterminador():
             mouse.position = (-57, 148)
             time.sleep(0.5)
             mouse.click(Button.left, 1)
-            chamados_fechados += 1
             
         else:
             mouse.position = (-57, 148)
@@ -423,10 +449,108 @@ def exterminador():
 
         toggle_pause()
 
+##############################################################################
+
+# Leitor
+
+def check_word_in_clipboard_leitor():
+    global palavra
+    # Get text from the clipboard
+    clipboard_text = pyperclip.paste()
+
+def toggle_pause_leitor():
+    global paused  # To modify the paused state
+    if keyboard.is_pressed('esc'):
+        paused = not paused  # Toggle the paused state
+        if paused:
+            print("Script paused.")
+            playsound('audios\\pause.mp3')
+            return True  # Return True if paused
+        else:
+            print("Script resumed.")
+            playsound('audios\\pause.mp3')
+            return False  # Return False if resumed
+    return paused  # Return the current state
+
+def leitor():
+    playsound('audios\\SF.mp3')
+    time.sleep(3)
+    for i in range(131):
+        # Check if the script is paused, and wait if it is
+        while paused:
+            time.sleep(0.1)  # Sleep for a short time to avoid high CPU usage
+        
+
+        # abertura do primeiro chamado
+        mouse.position = (-1164, 442)
+        time.sleep(0.5)
+        mouse.click(Button.left, 1)
+        time.sleep(5)
+
+        mouse.position = (-57, 148)
+        time.sleep(0.5)
+        mouse.click(Button.left, 1)
+        time.sleep(0.5)
+        mouse.position = (-1164, 442)
+        time.sleep(0.5)
+        keyboard.press_and_release('down')
+        keyboard.press_and_release('down')
+        keyboard.press_and_release('down')
+        keyboard.press_and_release('down')
+
+    toggle_pause_leitor()
+
+##################################################################################
+
+#sub_categorizador
+
+def sub_categorizador():
+    playsound('audios\\SF.mp3')
+
+    # Defina o caminho completo do script que deseja executar
+    script_path = os.path.join(os.getcwd(), 'sub_categorizador.py')
+
+    # Caminho para pythonw.exe
+    pythonw_path = os.path.join(os.path.dirname(sys.executable), 'pythonw.exe')
+
+    # Inicia o script em segundo plano usando pythonw
+    try:
+        subprocess.Popen([pythonw_path, script_path])
+        print("O script sub_categorizador.py foi iniciado em segundo plano.")
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
+
+
+##################################################################################
+
+# desbloquear_front
+
+def desbloquear_front():
+    playsound('audios\\SF.mp3')
+
+    # Defina o caminho completo do script que deseja executar
+    script_path = os.path.join(os.getcwd(), 'desbloquear_front.py')
+
+    # Caminho para pythonw.exe
+    pythonw_path = os.path.join(os.path.dirname(sys.executable), 'pythonw.exe')
+
+    # Inicia o script em segundo plano usando pythonw
+    try:
+        subprocess.Popen([pythonw_path, script_path])
+        print("O script desbloquear_front.py foi iniciado em segundo plano.")
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
+
+
+##################################################################################
+
 keyboard.add_hotkey('alt+c', chamado_cassi)
 keyboard.add_hotkey('alt+g', chamado_gusta)
-keyboard.add_hotkey('alt+x', chamado_ita)
+keyboard.add_hotkey('alt+x', chamado_itacir)
 keyboard.add_hotkey('alt+v', vpn_ferias)
-keyboard.add_hotkey('alt+k', exterminador)
+keyboard.add_hotkey('alt+k', exterminadorwin)
+keyboard.add_hotkey('alt+q', leitor)
+keyboard.add_hotkey('alt+l', sub_categorizador)
+keyboard.add_hotkey('alt+f', desbloquear_front)
 
 keyboard.wait('f2')
