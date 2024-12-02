@@ -11,6 +11,8 @@ from PyQt5.QtCore import QTimer
 import subprocess
 import sys
 import os
+import tkinter.messagebox as messagebox
+
 
 
 mouse = Controller()
@@ -31,15 +33,6 @@ def chamado_cassi():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
-    mouse.position = (-903, 198)
-    mouse.click(Button.left, 1)
-    keyboard.write('cassiara stork')
-    time.sleep(0.5)
-    keyboard.press_and_release('backspace')
-    time.sleep(0.5)
-    mouse.position = (-921, 243)
-    mouse.click(Button.left, 1)
-    time.sleep(0.5)
     mouse.position = (-466, 202)
     mouse.click(Button.left, 1)
     keyboard.write('segurança da informação')
@@ -47,6 +40,15 @@ def chamado_cassi():
     keyboard.press_and_release('backspace')
     time.sleep(0.5)
     mouse.position = (-473, 245)
+    mouse.click(Button.left, 1)
+    time.sleep(0.5)
+    mouse.position = (-903, 198)
+    mouse.click(Button.left, 1)
+    keyboard.write('cassiara stork')
+    time.sleep(0.5)
+    keyboard.press_and_release('backspace')
+    time.sleep(0.5)
+    mouse.position = (-921, 243)
     mouse.click(Button.left, 1)
     time.sleep(0.5)
     mouse.position = (-329, 333)
@@ -65,22 +67,22 @@ def chamado_gusta():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
-    mouse.position = (-903, 198)
-    mouse.click(Button.left, 1)
-    keyboard.write('gustavo hetrich da cunha')
-    time.sleep(0.5)
-    keyboard.press_and_release('backspace')
-    time.sleep(0.5)
-    mouse.position = (-921, 243)
-    mouse.click(Button.left, 1)
-    time.sleep(0.5)
     mouse.position = (-466, 202)
     mouse.click(Button.left, 1)
-    keyboard.write('tecnologia da informação')
+    keyboard.write('Tecnologia da Informação')
     time.sleep(0.5)
     keyboard.press_and_release('backspace')
     time.sleep(0.5)
     mouse.position = (-473, 245)
+    mouse.click(Button.left, 1)
+    time.sleep(0.5)
+    mouse.position = (-903, 198)
+    mouse.click(Button.left, 1)
+    keyboard.write('Gustavo/')
+    time.sleep(0.5)
+    keyboard.press_and_release('backspace')
+    time.sleep(0.5)
+    mouse.position = (-921, 243)
     mouse.click(Button.left, 1)
     time.sleep(0.5)
     mouse.position = (-329, 333)
@@ -98,22 +100,22 @@ def chamado_itacir():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
-    mouse.position = (-903, 198)
-    mouse.click(Button.left, 1)
-    keyboard.write('itacir gui')
-    time.sleep(0.5)
-    keyboard.press_and_release('backspace')
-    time.sleep(0.5)
-    mouse.position = (-921, 243)
-    mouse.click(Button.left, 1)
-    time.sleep(0.5)
     mouse.position = (-466, 202)
     mouse.click(Button.left, 1)
-    keyboard.write('tecnologia da informação')
+    keyboard.write('Tecnologia da Informação')
     time.sleep(0.5)
     keyboard.press_and_release('backspace')
     time.sleep(0.5)
     mouse.position = (-473, 245)
+    mouse.click(Button.left, 1)
+    time.sleep(0.5)
+    mouse.position = (-903, 198)
+    mouse.click(Button.left, 1)
+    keyboard.write('Itacir Gui')
+    time.sleep(0.5)
+    keyboard.press_and_release('backspace')
+    time.sleep(0.5)
+    mouse.position = (-921, 243)
     mouse.click(Button.left, 1)
     time.sleep(0.5)
     mouse.position = (-329, 333)
@@ -126,7 +128,6 @@ def chamado_itacir():
     mouse.position = (-626, 648)
     time.sleep(0.3)
     mouse.click(Button.left, 1)
-
 ########################################################################################
 
 #vpn e férias:
@@ -189,6 +190,8 @@ def ativar_vpn():
    iniciar_vpn.pack()
    vpnwin.mainloop()
 
+
+
 def chamado_vpn():
 
     agora = datetime.now()
@@ -201,8 +204,8 @@ def chamado_vpn():
 
     try:
         # Converte as datas de string para datetime
-        data_inicial_dt = datetime.strptime(data_inicial, '%d%m%Y').date()
-        data_final_dt = datetime.strptime(data_final, '%d%m%Y').date()
+        data_inicial_dt = datetime.strptime(data_inicial, '%d/%m/%Y').date()
+        data_final_dt = datetime.strptime(data_final, '%d/%m/%Y').date()
     except ValueError:
         playsound('audios\\alert.mp3')
         print('Erro ao converter as datas. Verifique se as datas estão no formato DDMMYYYY.')
@@ -279,10 +282,110 @@ def chamado_vpn():
     keyboard.write('Itacir Gui')
 
 def ativar_ferias():
-   feriawin = tk.CTk()
-   feriawin.title("Férias")
-   feriawin.geometry("500x500")
-   feriawin.mainloop()
+    global nome_ferias, data_inicial_ferias, data_final_ferias
+    feriawin = tk.CTk()
+    feriawin.title("Férias")
+    feriawin.geometry("500x220")
+    
+    # Entrada para o nome
+    nome_ferias = tk.CTkEntry(feriawin, placeholder_text="Nome", width=200, height=50)
+    nome_ferias.pack()
+    
+    # Entrada para a data inicial
+    data_inicial_ferias = tk.CTkEntry(feriawin, placeholder_text="Data inicial", width=200, height=50)
+    data_inicial_ferias.pack()
+    
+    # Entrada para a data final
+    data_final_ferias = tk.CTkEntry(feriawin, placeholder_text="Data final", width=200, height=50)
+    data_final_ferias.pack()
+    
+    # Botão para iniciar
+    iniciar_ferias = tk.CTkButton(feriawin, text="Iniciar", command=chamado_ferias, width=200, height=50, anchor="center")
+    iniciar_ferias.pack()
+    
+    feriawin.mainloop()
+
+def chamado_ferias():
+    # Obter dados da interface gráfica
+    nome = nome_ferias.get()
+    data_inicial = data_inicial_ferias.get()
+    data_final = data_final_ferias.get()
+
+    try:
+        # Converte as datas de string para datetime
+        data_inicial_dt = datetime.strptime(data_inicial, '%d/%m/%Y').date()
+        data_final_dt = datetime.strptime(data_final, '%d/%m/%Y').date()
+    except ValueError:
+        playsound('audios\\alert.mp3')
+        print('Erro ao converter as datas. Verifique se as datas estão no formato DD/MM/YYYY.')
+        return
+
+    # Ajusta a data inicial para o próximo dia útil
+    data_inicial_dt = next_working_day(data_inicial_dt)
+    print(f'Data inicial ajustada para o próximo dia útil: {data_inicial_dt.strftime("%d/%m/%Y")}')
+
+    # Ajusta a data final para o dia útil anterior
+    data_final_dt = previous_working_day(data_final_dt)
+    print(f'Data final ajustada para o dia útil anterior: {data_final_dt.strftime("%d/%m/%Y")}')
+
+    # Atualiza as datas formatadas
+    data_inicial = data_inicial_dt.strftime('%d/%m/%Y')
+    data_final = data_final_dt.strftime('%d/%m/%Y')
+
+    # Imprime o fluxo de liberação de férias
+    print('\nIniciado Liberação de Férias')
+    time.sleep(3)
+    playsound('audios\\pause.mp3')
+    
+    # Liberação de férias
+    keyboard.write(f"Bloquear usuário (Férias) - {nome}")
+    keyboard.press_and_release('tab')
+    time.sleep(0.5)
+    keyboard.write('0030')
+    keyboard.press_and_release('tab')
+    time.sleep(1)
+    type_slowly(data_inicial)
+    time.sleep(2)
+    playsound('audios\\confirm_sound.mp3')
+    time.sleep(1)
+    keyboard.write(data_inicial)  # Tempo arredondado
+    time.sleep(2)
+    playsound('audios\\confirm_sound.mp3')
+    time.sleep(1)
+    keyboard.write('Favor bloquear o usuário por motivo de férias')
+    time.sleep(2)
+    keyboard.write('tecnologia da info')
+    time.sleep(0.5)
+    time.sleep(4)
+    keyboard.write('Itacir Gui')
+    playsound('audios\\alert.mp3')
+
+    print('\nPara remoção inicie o Fluxo e aperte enter')
+    print('Iniciado Remoção de Férias\n')
+    time.sleep(10)
+    playsound('audios\\pause.mp3')
+    time.sleep(1)
+
+    # Remover férias
+    keyboard.write(f"Desbloquear usuário (Férias) - {nome}")
+    keyboard.press_and_release('tab')
+    time.sleep(0.5)
+    keyboard.write('0030')
+    keyboard.press_and_release('tab')
+    time.sleep(1)
+    type_slowly(data_final)
+    time.sleep(2)
+    playsound('audios\\confirm_sound.mp3')
+    time.sleep(1)
+    keyboard.write('1000')  # Tempo final
+    time.sleep(2)
+    playsound('audios\\confirm_sound.mp3')
+    time.sleep(1)
+    keyboard.write('Favor desbloquear o usuário para o retorno de suas férias')
+    time.sleep(2)
+    keyboard.write('tecnologia da informação')
+    time.sleep(4)
+    keyboard.write('Itacir Gui')
 
 
 
@@ -383,8 +486,7 @@ def exterminador():
         
         # Now, since "palavra" is global, it will correctly reflect the result of check_word_in_clipboard()
         if palavra:
-            playsound('audios\\alert.mp3')
-            keyboard.wait('enter')
+            messagebox.showinfo("Palavra Encontrada", "A palavra foi encontrada no clipboard.")
             time.sleep(1)
             mouse.position = (-1164, 442)
             time.sleep(0.5)
@@ -425,7 +527,7 @@ def exterminador():
             mouse.scroll(0, -21)
             mouse.position = (-1167, 476)
             time.sleep(4)
-            keyboard.write('O Erro de "Código de segurança incorreto ocorre quando os minutos do celular do cooperado está fora do fuso correto, favor verificar se os minutos no celular do cooperado batem com os de outros dispositivos. Caso mesmo após verificar o horário o erro persista favor reabrir este chamado relatando o caso com uma foto do celular se possível.')
+            keyboard.write('Foi lançada a versão 2.4.0 do aplicativo no qual é resolvido o Bug de Módulo de segurança incorreto, favor auxiliar o cooperado e atualizar o aplicativo')
             time.sleep(7)
             mouse.position = (-57, 148)
             time.sleep(0.5)
@@ -544,13 +646,14 @@ def desbloquear_front():
 
 ##################################################################################
 
-keyboard.add_hotkey('alt+c', chamado_cassi)
-keyboard.add_hotkey('alt+g', chamado_gusta)
-keyboard.add_hotkey('alt+x', chamado_itacir)
-keyboard.add_hotkey('alt+v', vpn_ferias)
-keyboard.add_hotkey('alt+k', exterminadorwin)
-keyboard.add_hotkey('alt+q', leitor)
-keyboard.add_hotkey('alt+l', sub_categorizador)
-keyboard.add_hotkey('alt+f', desbloquear_front)
+while True:
+    keyboard.add_hotkey('alt+c', chamado_cassi)
+    keyboard.add_hotkey('alt+g', chamado_gusta)
+    keyboard.add_hotkey('alt+x', chamado_itacir)
+    keyboard.add_hotkey('alt+v', vpn_ferias)
+    keyboard.add_hotkey('alt+k', exterminadorwin)
+    keyboard.add_hotkey('alt+q', leitor)
+    keyboard.add_hotkey('alt+l', sub_categorizador)
+    keyboard.add_hotkey('alt+f', desbloquear_front)
 
-keyboard.wait('f2')
+    keyboard.wait('f2')
