@@ -29,7 +29,7 @@ paused = False  # Variable to track the paused state
 ####################################################################################
 
 # Categorizador
-def chamado_cassi():
+def chamado_pesso1():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
@@ -63,7 +63,7 @@ def chamado_cassi():
     mouse.click(Button.left, 1)
 
 
-def chamado_gusta():
+def chamado_pessoa2():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
@@ -96,7 +96,7 @@ def chamado_gusta():
     time.sleep(0.3)
     mouse.click(Button.left, 1)
 
-def chamado_itacir():
+def chamado_pessoa3():
     print('Script started')
     playsound('audios\confirm_sound.mp3')
     time.sleep(1)
@@ -647,9 +647,9 @@ def desbloquear_front():
 ##################################################################################
 
 while True:
-    keyboard.add_hotkey('alt+c', chamado_cassi)
-    keyboard.add_hotkey('alt+g', chamado_gusta)
-    keyboard.add_hotkey('alt+x', chamado_itacir)
+    keyboard.add_hotkey('alt+c', chamado_pesso1)
+    keyboard.add_hotkey('alt+g', chamado_pessoa2)
+    keyboard.add_hotkey('alt+x', chamado_pessoa3)
     keyboard.add_hotkey('alt+v', vpn_ferias)
     keyboard.add_hotkey('alt+k', exterminadorwin)
     keyboard.add_hotkey('alt+q', leitor)
