@@ -16,20 +16,23 @@ Ajustes Automáticos de Datas: SensrAuto facilita a correção automática de da
 
 Flexibilidade e Personalização: O framework é altamente personalizável, permitindo que seja adaptado às necessidades específicas de cada organização. SensrAuto pode ser facilmente integrado com outras ferramentas e sistemas corporativos, garantindo flexibilidade para diferentes tipos de processos.
 
-Atalhos de Teclado do SensrAuto
+---
 
-Alt + C - Categoria para Pessoa 1: Categoriza automaticamente o chamado para a pessoa configurada como "pessoa-1".
+#### Atalhos de Teclado do SensrAuto
 
-Alt + G - Categoria para Pessoa 2: Categorização para "pessoa-2".
+- **Alt + C** - Categoria para Pessoa 1: Categoriza automaticamente o chamado para a pessoa configurada como "pessoa-1".
 
-Alt + X - Categoria para Pessoa 3: Categorização para "pessoa-3".
+- **Alt + G** - Categoria para Pessoa 2: Categorização para "pessoa-2".
 
-Alt + V - Fluxo de VPN e Férias: Abre uma janela para gerar o fluxo de VPN e férias.
+- **Alt + X** - Categoria para Pessoa 3: Categorização para "pessoa-3".
 
-Alt + K - Fechamento Automático de Chamados (Exterminador): Realiza o fechamento automático de chamados.
+- **Alt + V** - Fluxo de VPN e Férias: Abre uma janela para gerar o fluxo de VPN e férias.
 
-Alt + Q - Leitor de Chamados: Avança automaticamente entre os chamados.
+- **Alt + K** - Fechamento Automático de Chamados (Exterminador): Realiza o fechamento automático de chamados.
 
-Alt + L - Sub-Categorizador (Bloco de Notas Online): Abre uma janela com um bloco de notas online.
+- **Alt + Q** - Leitor de Chamados: Avança automaticamente entre os chamados.
+
+- **Alt + L** - Sub-Categorizador (Bloco de Notas Online): Abre uma janela com um bloco de notas online.
+
 
 
